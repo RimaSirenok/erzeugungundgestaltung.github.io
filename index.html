@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ZWISCHEN ERZEUGUNG UND GESTALTUNG</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== ГОЛОВНИЙ ЗАГОЛОВОК САЙТУ ===== -->
+<section class="page-intro">
+  <h1 class="page-title">ZWISCHEN ERZEUGUNG UND GESTALTUNG </h1>
+  <p class="page-description">
+    Generative AI integriert sich zunehmend in die meisten Bereiche des Designs. Dennoch bleibt die Frage offen, ob sie tatsächlich alle unsere Bedürfnisse erfüllen kann. Dieses Projekt untersucht die Möglichkeiten des Codings mit p5.js im Vergleich zur generativen AI Midjourney anhand von drei Effekten: ASCII Art, Pixelisation und Randomness.
+  </p>
+</section>
+
+<!-- ===== БЛОК 1 ===== -->
+<div class="slider-block">
+  <h2 class="slider-block-title">ASCII ART</h2>
+
+  <div class="slider-grid">
+    <div class="wrapper">
+      <div class="images">
+        <img class="img-1" src="images/s4.webp" alt="">
+        <img class="img-2" src="images/sp4.png" alt="">
+      </div>
+      <div class="slider">
+        <div class="drag-line"><span></span></div>
+        <input type="range" min="0" max="100" value="50">
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <div class="images">
+        <img class="img-1" src="images/s1.png" alt="">
+        <img class="img-2" src="images/sp1.png" alt="">
+      </div>
+      <div class="slider">
+        <div class="drag-line"><span></span></div>
+        <input type="range" min="0" max="100" value="50">
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <div class="images">
+        <img class="img-1" src="images/s3.webp" alt="">
+        <img class="img-2" src="images/sp3.png" alt="">
+      </div>
+      <div class="slider">
+        <div class="drag-line"><span></span></div>
+        <input type="range" min="0" max="100" value="50">
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <div class="images">
+        <img class="img-1" src="images/s9.webp" alt="">
+        <img class="img-2" src="images/sp9.png" alt="">
+      </div>
+      <div class="slider">
+        <div class="drag-line"><span></span></div>
+        <input type="range" min="0" max="100" value="50">
+      </div>
+    </div>
+  </div>
+
+  <p class="slider-block-text">Prompt-Beispiel:
+    
+    https://s.mj.run/EiP3R1svmU4 ASCII art style, black and white, high contrast, text-like aesthetic, grid of symbols, minimalist, preserve original composition, literal depiction, no extra elements, no faces, no people, no environment, no nature, no t_]() 
+  </p>
+
+   <p class="slider-block-text">Code-Beispiel:
+    let img;
+let tilesX = 24;
+let tilesY = 24;
+let font;
+let chars = "§!%+(*ß";
+function preload() {
+  img = loadImage("sp.jpg");
+  font = loadFont("IBMPlexMono-Regular.ttf");
+}
+function setup() {
+  createCanvas(500, 500);
+  colorMode(HSB, 100);
+  img.resize(tilesX, tilesY);
+  textFont(font);
+  textAlign(CENTER, CENTER);
+  textSize(56);
+}
+function draw() {
+  background("#f1f1f1");
+  noStroke();
+let tileW = width / tilesX;
+  let tileH = height / tilesY;
+translate(tileW / 2, tileH / 2);
+for (let x = 0; x < tilesX; x++) {
+for (let y = 0; y < tilesY; y++) {
+let c = img.get(x, y);
+let b = brightness(c);
+let selector = constrain(
+int(map(b, 0, 100, chars.length - 1, 0)), 0,
+chars.length - 1
+      );
+ fill(0);
+push();
+      translate(x * tileW, y * tileH);
+      text(chars.charAt(selector), 0, 0);
+      pop();
+    }
+  }
+}
+function keyPressed() {
+  saveCanvas('mySketch', 'png');
+}
+  </p>
+</div>
+
+<!-- ===== БЛОК 2 ===== --> 
+ <div class="slider-block"> 
+  <h2 class="slider-block-title">PIXELISATION</h2>
+   <div class="slider-grid"> <div class="wrapper"> 
+    <div class="images"> 
+      <img class="img-1" src="images/p4.webp" alt="before"> 
+      <img class="img-2" src="images/px3.png" alt="after"> 
+    </div> <div class="slider"> 
+      <div class="drag-line"><span></span></div> 
+      <input type="range" min="0" max="100" value="50"> 
+    </div> 
+  </div> 
+  <div class="wrapper"> 
+    <div class="images"> 
+      <img class="img-1" src="images/p3.webp" alt="before"> 
+      <img class="img-2" src="images/px4.png" alt="after"> 
+    </div> 
+    <div class="slider"> 
+      <div class="drag-line"><span></span></div> 
+      <input type="range" min="0" max="100" value="50"> 
+    </div> 
+  </div>
+  <div class="wrapper"> 
+    <div class="images"> 
+      <img class="img-1" src="images/p5.webp" alt="before"> 
+      <img class="img-2" src="images/px5.png" alt="after"> 
+    </div> 
+    <div class="slider"> 
+      <div class="drag-line"><span></span></div> 
+      <input type="range" min="0" max="100" value="50"> 
+    </div> 
+  </div> 
+  <div class="wrapper"> 
+    <div class="images"> 
+      <img class="img-1" src="images/p9.webp" alt="before"> 
+      <img class="img-2" src="images/px9.png" alt="after"> 
+    </div> <div class="slider"> 
+      <div class="drag-line"><span></span></div> 
+      <input type="range" min="0" max="100" value="50"> 
+    </div> 
+  </div> 
+</div> 
+<p class="slider-block-text">Prompt-Beispiel: https://s.mj.run/WzP9v_WDcew pixelated depiction, flat pixels, pixelated pattern, literal representation, preserve original composition, no extra elements, no silhouettes --v 6.0 --ar 1:1 --no faces, people, characters, environment, scenery, nature, trees, forest, landscape, background additions, buildings, rivers, city, objects, animals, furniture, background characters --raw -</p> 
+
+<p class="slider-block-text">Code-Beispiel: let img;
+
+let tilesX = 70;
+let tilesY = tilesX;
+
+function preload() {
+  img = loadImage("art.jpg");
+}
+
+function setup() {
+  createCanvas(500, 500);
+  img.resize(tilesX, 0);
+  noStroke();
+}
+
+function draw() {
+  let tileW = width / tilesX;
+  let tileH = height / tilesY;
+
+  for (let x = 0; x < tilesX; x++) {
+    for (let y = 0; y < tilesY; y++) {
+
+      let c = img.get(x, y);
+
+      // інверсія кольору
+      let inv = color(
+        255 - red(c),
+        255 - green(c),
+        255 - blue(c)
+      );
+
+      fill(inv);
+      rect(x * tileW, y * tileH, tileW, tileH);
+    }
+  }
+}
+
+function keyPressed() {
+  saveCanvas('mySketch', 'png');
+}</p> 
+</div> 
+
+<!-- ===== БЛОК 3 ===== -->
+ <div class="slider-block"> 
+  <h2 class="slider-block-title">RANDOMNESS</h2> 
+  <div class="slider-grid"> 
+    <div class="wrapper"> 
+      <div class="images"> 
+        <img class="img-1" src="images/ra2.webp" alt="before"> 
+        <img class="img-2" src="images/r2.png" alt="after"> 
+      </div> <div class="slider"> 
+        <div class="drag-line"><span></span></div> 
+        <input type="range" min="0" max="100" value="50"> 
+      </div> 
+    </div> 
+    <div class="wrapper"> 
+      <div class="images"> 
+        <img class="img-1" src="images/ra1.webp" alt="before"> 
+        <img class="img-2" src="images/r1.png" alt="after"> 
+      </div> <div class="slider"> 
+        <div class="drag-line"><span></span></div> 
+        <input type="range" min="0" max="100" value="50"> 
+      </div> 
+    </div> 
+    <div class="wrapper"> 
+      <div class="images"> 
+        <img class="img-1" src="images/ra3.webp" alt="before"> 
+        <img class="img-2" src="images/r3.png" alt="after"> 
+      </div> 
+      <div class="slider"> 
+        <div class="drag-line"><span></span></div> 
+        <input type="range" min="0" max="100" value="50"> 
+      </div> 
+    </div> 
+    <div class="wrapper"> 
+      <div class="images"> 
+        <img class="img-1" src="images/ra5.webp" alt="before"> 
+        <img class="img-2" src="images/r4.png" alt="after"> 
+      </div>
+      <div class="slider"> 
+        <div class="drag-line"><span></span></div> 
+        <input type="range" min="0" max="100" value="50"> 
+      </div> 
+    </div> 
+  </div> 
+  <p class="slider-block-text">Prompt-Beispiel: black background with randomly scattered white dots, varying sizes and opacity, white speckles, minimal composition, no extra elements, abstract, high contrast --v 6.0 --ar 1:1 --no faces, people, characters, environment, scenery, nature, trees, forest, landscape, buildings, objects, animals, furniture --raw -</p> 
+
+  <p class="slider-block-text">Code-Beispiel: function setup() {
+  createCanvas(400, 400); 
+  noStroke();            
+  background(255);     
+  
+
+  for (let i = 0; i < 20; i++) { 
+    let x = random(width);       
+    let y = random(height);       
+    let w = random(20, 80);        
+    let h = random(5, 30);         
+    
+    
+    fill(random(255), random(255), random(255), random(150, 255));
+    
+    rect(x, y, w, h); 
+  }
+}
+function keyPressed() {
+  saveCanvas('mySketch', 'png');
+}</p> 
+
+<!-- ===== ФІНАЛЬНИЙ ТЕКСТ ===== -->
+<section class="page-outro">
+  <p class="outro-text">
+    Die Ergebnisse zeigen, dass Coding mit p5js eine präzise und detaillierte Anpassung sowie gezielte Kontrolle bestimmter Effekte ermöglicht, während Midjourney unerwartete Bilder generiert und diese nach eigener Logik interpretiert. Daraus wird deutlich, dass generative AI ein interessantes, jedoch kein allmächtiges Tool ist. Ideale Resultate entstehen nur dann, wenn klar verstanden wird, in welchen Bereichen sie unterstützend wirkt und in welchen sie limitiert oder ungeeignet ist.
+  </p>
+</section>
+
+
+
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+ 
+
+

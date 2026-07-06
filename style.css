@@ -1,0 +1,194 @@
+/* ===== ОБОВʼЯЗКОВО ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== ШРИФТ ===== */
+@font-face {
+  font-family: 'Ltc';
+  src: url('fonts/LCTIptex-Medium.otf');
+}
+
+/* ===== BODY ===== */
+body {
+  background: #ffffff;
+  font-family: 'Ltc', sans-serif;
+  padding: 60px 0;
+  color: #1847ff;
+}
+
+/* ===== ГОЛОВНИЙ ХЕДЕР САЙТУ ===== */
+.page-intro {
+  max-width: 1100px;
+  margin: 0 auto 70px auto;
+  text-align: center;
+}
+
+.page-title {
+  font-family: 'Ltc', sans-serif;
+  font-size: 64px;        /* БІЛЬШИЙ ніж у блоків */
+  line-height: 1.1;
+  margin-bottom: 30px;
+  color: #1847ff;
+}
+
+.page-description {
+  font-family: 'Ltc', sans-serif;
+  font-size: 22px;        /* більший ніж slider-block-text */
+  line-height: 1.55;
+  color: #555;
+  max-width: 1100px;
+  margin: 0 auto;
+  hyphens: auto;
+  
+}
+
+/* ===== БЛОК ===== */
+.slider-block {
+  max-width: 1050px;
+  margin: 0 auto 100px auto;
+}
+
+.slider-block-title {
+  text-align: center;
+  font-size: 38px;
+  margin-bottom: 45px;
+}
+
+.slider-block-text {
+  text-align: center;
+  font-size: 18px;
+  margin: 30px auto 0 auto; /* ← ОЦЕ ВАЖЛИВО */
+  line-height: 1.5;
+  max-width: 950px;
+}
+
+/* ===== GRID 2x2 ===== */
+.slider-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 30px;
+  row-gap: 30px;
+  margin: 0 auto;
+}
+
+/* ===== КВАДРАТ ===== */
+.wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #fff;
+  border: 10px solid #fff;
+  box-shadow: 0 0 15px rgba(0,0,0,0.15);
+}
+
+/* ===== IMAGES ===== */
+.wrapper .images,
+.wrapper .slider {
+  position: absolute;
+  inset: 0;
+}
+
+.wrapper .images img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wrapper .images .img-2 {
+  width: 50%;
+}
+
+/* ===== SLIDER ===== */
+.wrapper .slider input {
+  width: 100%;
+  height: 100%;
+  background: none;
+  -webkit-appearance: none;
+}
+
+.slider input::-webkit-slider-thumb {
+  width: 3px;
+  height: 100%;
+  background: none;
+  cursor: col-resize;
+}
+
+.slider .drag-line {
+  position: absolute;
+  left: 50%;
+  width: 3px;
+  height: 100%;
+  pointer-events: none;
+}
+
+.slider .drag-line span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.slider .drag-line span::before,
+.slider .drag-line span::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  border: 10px solid transparent;
+  border-bottom: 0;
+  border-right: 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.slider .drag-line span::before {
+  left: 40%;
+  border-left-color: #fff;
+}
+
+.slider .drag-line span::after {
+  left: 60%;
+  border-top-color: #fff;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+}
+
+/* ===== ВИМКНУТИ СИНІ КРУЖКИ / ФОКУС ===== */
+input[type="range"] {
+  outline: none;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-moz-focus-outer {
+  border: 0;
+}
+
+/* ===== ФІНАЛЬНИЙ ТЕКСТ В КІНЦІ САЙТУ ===== */
+.page-outro {
+  max-width: 900px;      /* ширина текстового блоку */
+  margin: 110px auto 80px; /* відстань зверху і знизу */
+  padding: 0 20px;
+  max-width: 980px;
+}
+
+.outro-text {
+  font-size: 22px;
+  line-height: 1.55;
+  text-align: center;
+  color: #555;    /* або left, якщо хочеш більш “академічно” */
+}
